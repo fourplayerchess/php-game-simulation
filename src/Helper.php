@@ -138,7 +138,7 @@ class Helper
      */
     public function getSquareInfo($square) {
         $numericSquare = $this->isNotOffBoardSquare($square);
-        if (!$numericSquare) {
+        if (!is_int($numericSquare) || !is_array($numericSquare)) {
             return \false;
         }
         $info = [];
