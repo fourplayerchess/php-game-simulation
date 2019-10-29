@@ -33,6 +33,14 @@ class Helper
     /** @var array $enpassants The enpassant codes. */
     private $enpassants = ['R' => '-', 'B' => '-', 'Y' => '-', 'G' => '-',];
 
+    /** @var array The castling rights. */
+    private $castling = [
+        'h1'  => ['f1'  => \true,], 'h1'  => ['j1'  => \true,],
+        'a8'  => ['a6'  => \true,], 'a8'  => ['a10' => \true,],
+        'g14' => ['i14' => \true,], 'g14' => ['e14' => \true,],
+        'n7'  => ['n9'  => \true,], 'n7'  => ['n5'  => \true,],
+    ];
+
     /** @var array $convertPromotionPiece Convert the promotion piece. */
     private $convertPromotionPiece = ['P' => 0, 'N' => 1, 'B' => 2, 'R' => 3, 'Q' => 4, 'K' => 5,];
 
