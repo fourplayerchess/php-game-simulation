@@ -91,7 +91,7 @@ class HelperTest extends TestCase
             $this->assertTrue(!($helper->isNotOffBoardSquare($badSquare)));
         }
         foreach ($goodSquares as $goodSquare) {
-            $this->assertTrue($helper->isNotOffBoardSquare($goodSquare));
+            $this->assertTrue((\is_int($helper->isNotOffBoardSquare($goodSquare)) || \is_array($helper->isNotOffBoardSquare($goodSquare))));
         }
     }
 }
