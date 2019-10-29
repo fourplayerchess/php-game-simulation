@@ -36,4 +36,26 @@ class HelperTest extends TestCase
             $this->assertTrue($nextColor == $newColor);
         }
     }
+
+    /**
+     * @return void Returns nothing.
+     */
+    public function testEnpassantFunctions(): void
+    {
+        $helper = new Helper();
+        $enpassants = $helper->getEnpassant();
+        $this->assertTrue($enpassants == ['R' => '-', 'B' => '-', 'Y' => '-', 'G' => '-',]);
+        $helper->setEnpassant('R', 'A');
+        $helper->setEnpassant('B', 'B');
+        $helper->setEnpassant('Y', 'C');
+        $helper->setEnpassant('G', 'D');
+        $enpassants = $helper->getEnpassant();
+        $this->assertTrue($enpassants == ['R' => 'A', 'B' => 'B', 'Y' => 'C', 'G' => 'D',]);
+        $helper->optimizeEnpassant('R');
+        $helper->optimizeEnpassant('B');
+        $helper->optimizeEnpassant('Y');
+        $helper->optimizeEnpassant('G');
+        $enpassants = $helper->getEnpassant();
+        $this->assertTrue($enpassants == ['R' => '-', 'B' => '-', 'Y' => '-', 'G' => '-',]);
+    }
 }
