@@ -78,7 +78,7 @@ class Helper
      */
     public function optimizeEnpassant(string $color): void
     {
-        $this->enpassants[$this->nextColor[$color]] = '-';
+        $this->enpassants[$this->nextColor($color)] = '-';
     }
 
     /**
