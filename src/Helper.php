@@ -150,7 +150,7 @@ class Helper
             $info['color'] = $this->colorsReturn[$this->board[$numericSquare][0]];
             $info['piece'] = $this->piecesReturn[$this->board[$numericSquare][1]];
         }
-        return $info
+        return $info;
     }
 
     /**
