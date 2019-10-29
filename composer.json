@@ -1,0 +1,26 @@
+{
+    "name": "fourplayerchess/php-game-simulation",
+    "description": "Simulate 4 player chess games through PHP code.",
+    "homepage": "https://github.com/fourplayerchess/php-game-simulation",
+    "keywords": [],
+    "license": "GPL-3.0-only",
+    "require": {
+        "php": ">=7.3"
+    },
+    "require-dev": {
+        "vimeo/psalm": "^3",
+        "phpunit/phpunit": "^8.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "FourPlayerChess\\": "./src"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    },
+    "config": {
+        "optimize-autoloader": true
+    },
+    "prefer-stable": true
+}
