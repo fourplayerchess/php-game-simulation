@@ -111,13 +111,13 @@ class HelperTest extends TestCase
         $info2 = $helper->getSquareInfo('n11');
         $info3 = $helper->getSquareInfo('a4');
         $info4 = $helper->getSquareInfo('k1');
-        $this->assertTrue($info1['color'] => 'Y');
-        $this->assertTrue($info2['color'] => 'G');
-        $this->assertTrue($info3['color'] => 'B');
-        $this->assertTrue($info4['color'] => 'R');
-        $this->assertTrue($info1['piece'] => 'R');
-        $this->assertTrue($info2['piece'] => 'R');
-        $this->assertTrue($info3['piece'] => 'R');
-        $this->assertTrue($info4['piece'] => 'R');
+        $this->assertTrue($info1['color'] == 'Y');
+        $this->assertTrue($info2['color'] == 'G');
+        $this->assertTrue($info3['color'] == 'B');
+        $this->assertTrue($info4['color'] == 'R');
+        $this->assertTrue($info1['piece'] == 'R');
+        $this->assertTrue($info2['piece'] == 'R');
+        $this->assertTrue($info3['piece'] == 'R');
+        $this->assertTrue($info4['piece'] == 'R');
     }
 }
