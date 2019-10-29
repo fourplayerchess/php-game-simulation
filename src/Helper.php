@@ -137,7 +137,7 @@ class Helper
      * @return mixed Returns the square data or false.
      */
     public function getSquareInfo($square) {
-        $numericSquare = $this->isOffBoardSquare($square);
+        $numericSquare = $this->isNotOffBoardSquare($square);
         if (!$numericSquare) {
             return \false;
         }
@@ -162,7 +162,7 @@ class Helper
      */
     public function isEmptySquare(string $square): bool
     {
-        $numericSquare = $this->isOffBoardSquare($square);
+        $numericSquare = $this->isNotOffBoardSquare($square);
         if ($numericSquare) {
             if ($this->board[$numericSquare] !== 0) {
                 return \false;
@@ -178,7 +178,7 @@ class Helper
      *
      * @return mixed Returns the off board response.
      */
-    public function isOffBoardSquare(string $square)
+    public function isNotOffBoardSquare(string $square)
     {
         return \array_search($square, $this->numericAlphabeticSquares);
     }
