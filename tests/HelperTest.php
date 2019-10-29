@@ -104,7 +104,7 @@ class HelperTest extends TestCase
         }
         foreach ($goodSquares as $goodSquare) {
             $this->assertTrue((\is_int($helper->isNotOffBoardSquare($goodSquare)) || \is_array($helper->isNotOffBoardSquare($goodSquare))));
-            $res = \in_array($goodSquare, $emptySquares) ? $this->isEmptySquare($goodSquare) : !$this->isEmptySquare($goodSquare);
+            $res = \in_array($goodSquare, $emptySquares) ? $helper->isEmptySquare($goodSquare) : !$helper->isEmptySquare($goodSquare);
             $this->assertTrue($res);
         }
     }
