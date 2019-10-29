@@ -120,4 +120,58 @@ class Helper
     {
         return $this->enpassants;
     }
+
+    /**
+     * Get the square info.
+     *
+     * @param string $square The square to check.
+     *
+     * @return mixed Returns the square data or false.
+     */
+    public function getSquareInfo($square) {
+        $numericSquare = $this->isOffBoardSquare($square);
+        if (!$numericSquare) {
+            return \false;
+        }
+        $info = [];
+        $info['numeral'] = $numericSquare;
+        if ($this->isEmptySquare($numericSquare)) {
+            $info['color'] = \null;
+            $info['piece'] = \null;
+        } else {
+            $info['color'] = $this->colorsReturn[$this->board[$numericSquare][0]];
+            $info['piece'] = $this->piecesReturn[$this->board[$numericSquare][1]];
+        }
+        return $info
+    }
+
+    /**
+     * Check to see if the square is off board.
+     *
+     * @param string $square The square to work with.
+     *
+     * @return void Returns nothing.
+     */
+    public function isEmptySquare(string $square): bool
+    {
+        $numericSquare = $this->isOffBoardSquare($square);
+        if ($numericSquare) {
+            if ($this->board[$numericSquare] !== 0) {
+                return \false;
+            }
+        }
+        return \true;
+    }
+
+    /**
+     * Check to see if the square is off board.
+     *
+     * @param string $square The square to work with.
+     *
+     * @return void Returns nothing.
+     */
+    public function isOffBoardSquare(string $square): bool
+    {
+        return \array_search($square, $this->numericAlphabeticSquares);
+    }
 }
