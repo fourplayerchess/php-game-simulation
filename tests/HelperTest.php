@@ -87,11 +87,25 @@ class HelperTest extends TestCase
                                  'd2',  'e2',  'f2',  'g2',  'h2',  'i2',  'j2',  'k2',
                                  'd1',  'e1',  'f1',  'g1',  'h1',  'i1',  'j1',  'k1',
         ];
+        $emptySquares = [
+            'd12', 'e12', 'f12', 'g12', 'h12', 'i12', 'j12', 'k12',
+            'c11', 'd11', 'e11', 'f11', 'g11', 'h11', 'i11', 'j11', 'k11', 'l11',
+            'c10', 'd10', 'e10', 'f10', 'g10', 'h10', 'i10', 'j10', 'k10', 'l10',
+            'c9',  'd9',  'e9',  'f9',  'g9',  'h9',  'i9',  'j9',  'k9',  'l9',
+            'c8',  'd8',  'e8',  'f8',  'g8',  'h8',  'i8',  'j8',  'k8',  'l8',
+            'c7',  'd7',  'e7',  'f7',  'g7',  'h7',  'i7',  'j7',  'k7',  'l7',
+            'c6',  'd6',  'e6',  'f6',  'g6',  'h6',  'i6',  'j6',  'k6',  'l6',
+            'c5',  'd5',  'e5',  'f5',  'g5',  'h5',  'i5',  'j5',  'k5',  'l5',
+            'c4',  'd4',  'e4',  'f4',  'g4',  'h4',  'i4',  'j4',  'k4',  'l4',
+            'd3',  'e3',  'f3',  'g3',  'h3',  'i3',  'j3',  'k3',
+        ];
         foreach ($badSquares as $badSquare) {
             $this->assertTrue(!($helper->isNotOffBoardSquare($badSquare)));
         }
         foreach ($goodSquares as $goodSquare) {
             $this->assertTrue((\is_int($helper->isNotOffBoardSquare($goodSquare)) || \is_array($helper->isNotOffBoardSquare($goodSquare))));
+            $res = \in_array($goodSquare, $emptySquares) ? $this->isEmptySquare($goodSquare) : !$this->isEmptySquare($goodSquare);
+            $this->assertTrue($res);
         }
     }
 }
