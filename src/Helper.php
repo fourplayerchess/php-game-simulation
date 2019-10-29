@@ -92,4 +92,14 @@ class Helper
     {
         $this->enpassants[$color] = $value;
     }
+
+    /**
+     * Get enpassant array.
+     *
+     * @return array Returns the enpassant array.
+     */
+    public function getEnpassant(): array
+    {
+        return $this->enpassants;
+    }
 }
