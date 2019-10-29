@@ -163,7 +163,7 @@ class Helper
     public function isEmptySquare(string $square): bool
     {
         $numericSquare = $this->isNotOffBoardSquare($square);
-        if ($numericSquare) {
+        if (is_int($numericSquare) || is_array($numericSquare)) {
             if ($this->board[$numericSquare] !== 0) {
                 return \false;
             }
