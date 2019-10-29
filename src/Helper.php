@@ -35,10 +35,10 @@ class Helper
 
     /** @var array The castling rights. */
     private $castling = [
-        'h1'  => ['f1'  => \true,], 'h1'  => ['j1'  => \true,],
-        'a8'  => ['a6'  => \true,], 'a8'  => ['a10' => \true,],
-        'g14' => ['i14' => \true,], 'g14' => ['e14' => \true,],
-        'n7'  => ['n9'  => \true,], 'n7'  => ['n5'  => \true,],
+        'h1'  => ['f1'  => \true, 'j1'  => \true,],
+        'a8'  => ['a6'  => \true, 'a10' => \true,],
+        'g14' => ['i14' => \true, 'e14' => \true,],
+        'n7'  => ['n9'  => \true, 'n5'  => \true,],
     ];
 
     /** @var array $convertPromotionPiece Convert the promotion piece. */
@@ -158,7 +158,7 @@ class Helper
      *
      * @param string $square The square to work with.
      *
-     * @return void Returns nothing.
+     * @return bool Returns true if the square is empty or false.
      */
     public function isEmptySquare(string $square): bool
     {
@@ -176,9 +176,9 @@ class Helper
      *
      * @param string $square The square to work with.
      *
-     * @return void Returns nothing.
+     * @return mixed Returns the off board response.
      */
-    public function isOffBoardSquare(string $square): bool
+    public function isOffBoardSquare(string $square)
     {
         return \array_search($square, $this->numericAlphabeticSquares);
     }
