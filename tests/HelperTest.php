@@ -98,6 +98,7 @@ class HelperTest extends TestCase
             'c5',  'd5',  'e5',  'f5',  'g5',  'h5',  'i5',  'j5',  'k5',  'l5',
             'c4',  'd4',  'e4',  'f4',  'g4',  'h4',  'i4',  'j4',  'k4',  'l4',
             'd3',  'e3',  'f3',  'g3',  'h3',  'i3',  'j3',  'k3',
+            'a1',  'a2',  'a3',
         ];
         foreach ($badSquares as $badSquare) {
             $this->assertTrue(!($helper->isNotOffBoardSquare($badSquare)));
