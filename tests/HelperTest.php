@@ -323,7 +323,7 @@ class HelperTest extends TestCase
         ];
         foreach ($data as $from => $info) {
             foreach ($info as $to => $res) {
-                $isThreat = $helper->isPawnThreat($from, $to);
+                $isThreat = $helper->isPawnThreat($from, $to, \false);
                 $this->assertTrue($res == $isThreat);
             }
         }
