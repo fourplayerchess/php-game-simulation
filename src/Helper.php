@@ -42,7 +42,7 @@ class Helper
     ];
 
     /** @var array $moveTwoSquares A list of square to allow two space moves for pawns.*/
-    private static $moveTwoSquares = [
+    private $moveTwoSquares = [
         'd2',  'e2',  'f2',  'g2',  'h2',  'i2',  'j2',  'k2',
         'b4',  'b5',  'b6',  'b7',  'b8',  'b9',  'b10', 'b11',
         'd13', 'e13', 'f13', 'g13', 'h13', 'i13', 'j13', 'k13',
