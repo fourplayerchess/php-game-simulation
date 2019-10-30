@@ -41,9 +41,7 @@ class Helper
         'n7'  => ['n9'  => \true, 'n5'  => \true,],
     ];
 
-    /**
-     * @var array $moveTwoSquares A list of square to allow two space moves for pawns.
-     */
+    /** @var array $moveTwoSquares A list of square to allow two space moves for pawns.*/
     private static $moveTwoSquares = [
         'd2',  'e2',  'f2',  'g2',  'h2',  'i2',  'j2',  'k2',
         'b4',  'b5',  'b6',  'b7',  'b8',  'b9',  'b10', 'b11',
@@ -51,17 +49,13 @@ class Helper
         'm4',  'm5',  'm6',  'm7',  'm8',  'm9',  'm10', 'm11',
     ];
 
-     /**
-     * @var array $convertLetters Translate a letter to a number.
-     */
+     /** @var array $convertLetters Translate a letter to a number. */
     private $convertLetters = [
         'a' => 1, 'b' => 2, 'c' => 3,  'd' => 4,  'e' => 5,  'f' => 6,  'g' => 7,
         'h' => 8, 'i' => 9, 'j' => 10, 'k' => 11, 'l' => 12, 'm' => 13, 'n' => 14,
     ];
 
-    /**
-     * @var array $convertNumbers Translate a number to a letter.
-     */
+    /** @var array $convertNumbers Translate a number to a letter. */
     private $convertNumbers = [
         1  => 'a', 2  => 'b', 3  => 'c', 4  => 'd', 5  => 'e', 6  => 'f', 7  => 'g',
         8  => 'h', 9  => 'i', 10 => 'j', 11 => 'k', 12 => 'l', 13 => 'm', 14 => 'n',
