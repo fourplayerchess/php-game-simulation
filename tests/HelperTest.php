@@ -256,6 +256,7 @@ class HelperTest extends TestCase
                 echo $from;
                 echo $to;
                 echo $res ? 'true' : 'false';
+                echo $isThreat ? 'true' : 'false';
                 echo ']';
                 $this->assertTrue($res == $isThreat);
             }
