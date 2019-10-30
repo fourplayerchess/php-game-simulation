@@ -215,8 +215,8 @@ class Helper
     {
         $x1 = $this->convertLetters[$square1[0]];
         $x2 = $this->convertLetters[$square2[0]];
-        $y1 = \intval($square1[1]);
-        $y2 = \intval($square2[1]);
+        $y1 = \intval(\substr($square1, 1));
+        $y2 = \intval(\substr($square2, 1));
         if ($x1 > $x2) {
             $spaces_1 = $x1 - $x2;
             if ($spaces_1 != 1) {
@@ -269,8 +269,8 @@ class Helper
     {
         $x1 = $this->convertLetters[$square1[0]];
         $x2 = $this->convertLetters[$square2[0]];
-        $y1 = \intval($square1[1]);
-        $y2 = \intval($square2[1]);
+        $y1 = \intval(\substr($square1, 1));
+        $y2 = \intval(\substr($square2, 1));
         if ($x1 == $x2) {
             if ($y1 > $y2) {
                 $spaces = $y1 - $y2;
@@ -353,8 +353,8 @@ class Helper
     {
         $x1 = $this->convertLetters[$square1[0]];
         $x2 = $this->convertLetters[$square2[0]];
-        $y1 = \intval($square1[1]);
-        $y2 = \intval($square2[1]);
+        $y1 = \intval(\substr($square1, 1));
+        $y2 = \intval(\substr($square2, 1));
         if ($x1 > $x2) {
             $spaces_x = $x1 - $x2;
             if ($y1 > $y2) {
@@ -444,8 +444,8 @@ class Helper
     {
         $letterA = $this->convertLetters[$square1[0]];
         $letterB = $this->convertLetters[$square2[0]];
-        $numberA = \intval($square1[1]);
-        $numberB = \intval($square2[1]);
+        $numberA = \intval(\substr($square1, 1));
+        $numberB = \intval(\substr($square2, 1));
         $xA = $letterA + 2;
         $xB = $letterA - 2;
         $yA = $numberA + 1;
@@ -483,8 +483,8 @@ class Helper
     {
         $x1 = $this->convertLetters[$square1[0]];
         $x2 = $this->convertLetters[$square2[0]];
-        $y1 = \intval($square1[1]);
-        $y2 = \intval($square2[1]);
+        $y1 = \intval(\substr($square1, 1));
+        $y2 = \intval(\substr($square2, 1));
         if ($include) {
             if ($color == 'R') {
                 $yA = $y1 + 2;
