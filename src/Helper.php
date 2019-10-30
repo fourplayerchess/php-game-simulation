@@ -184,7 +184,7 @@ class Helper
     {
         $numericSquare = $this->isNotOffBoardSquare($square);
         if (\is_int($numericSquare)) {
-            return \is_array($this->board[$numericSquare]);
+            return !\is_array($this->board[$numericSquare]);
         }
         return \false;
     }
