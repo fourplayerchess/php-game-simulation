@@ -555,7 +555,7 @@ class Helper
                 if ($xB == $x2 && $yA == $y2 || $xB == $x2 && $yB == $y2) {
                     return $this->isEmptySquare($square2);
                 }
-            } elseif () {
+            } elseif ($color == 'Y') {
                 $yA = $y1 - 2;
                 $yB = $y1 - 1;
                 $xA = $x1 + 1;
