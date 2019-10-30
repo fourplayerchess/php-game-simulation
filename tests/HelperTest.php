@@ -148,33 +148,33 @@ class HelperTest extends TestCase
     {
         $helper = new Helper();
         $data = [
-            'a5' => [
-                'c4' => \true,
-                'c6' => \true,
-                'b7' => \true,
-                'c7' => \false,
-                'd5' => \false,
+            'a8' => [
+                'a9' => \true,
+                'b8' => \true,
+                'a7' => \true,
+                'c8' => \false,
+                'c9' => \false,
             ],
-            'e14' => [
-                'd12' => \true,
-                'f12' => \true,
-                'g13' => \true,
-                'g12' => \false,
-                'f8'  => \false,
-            ],
-            'n5' => [
-                'l4' => \true,
-                'l6' => \true,
-                'm7' => \true,
-                'm8' => \false,
-                'n8' => \false,
-            ],
-            'j1' => [
-                'k3' => \true,
-                'i3' => \true,
+            'h1' => [
+                'g1' => \true,
+                'i1' => \true,
                 'h2' => \true,
+                'i3' => \false,
                 'h3' => \false,
-                'h4' => \false,
+            ],
+            'g14' => [
+                'g13' => \true,
+                'f14' => \true,
+                'h14' => \true,
+                'f12' => \false,
+                'h12' => \false,
+            ],
+            'n7' => [
+                'n6' => \true,
+                'n8' => \true,
+                'm7' => \true,
+                'm5' => \false,
+                'n5' => \false,
             ],
         ];
         foreach ($data as $from => $info) {
