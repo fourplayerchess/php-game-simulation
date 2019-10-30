@@ -459,9 +459,9 @@ class Helper
         $yA = $numberA + 2;
         $yB = $numberA - 2;
         if ($yA == $numberB && $xA == $letterB ||
-            $yA == $numberB && $xB == $numberB ||
-            $yB == $numberB && $xA == $numberB ||
-            $yB == $numberB && $xB == $numberB) {
+            $yA == $numberB && $xB == $letterB ||
+            $yB == $numberB && $xA == $letterB ||
+            $yB == $numberB && $xB == $letterB) {
             return \true;
         }
         return \false;
