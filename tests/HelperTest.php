@@ -252,6 +252,11 @@ class HelperTest extends TestCase
         foreach ($data as $from => $info) {
             foreach ($info as $to => $res) {
                 $isThreat = $helper->isBishopThreat($from, $to);
+                echo '[';
+                echo $from;
+                echo $to;
+                echo $res ? 'true' : 'false';
+                echo ']';
                 $this->assertTrue($res == $isThreat);
             }
         }
