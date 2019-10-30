@@ -485,7 +485,7 @@ class Helper
      *
      * @return bool Returns the threat response.
      */
-    public static function isPawnThreat(string $square1, string $square2, string $color = 'R', $include = \true): bool
+    public function isPawnThreat(string $square1, string $square2, string $color = 'R', $include = \true): bool
     {
         $x1 = $this->convertLetters[$square1[0]];
         $x2 = $this->convertLetters[$square2[0]];
