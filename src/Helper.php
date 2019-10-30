@@ -143,7 +143,7 @@ class Helper
         }
         $info = [];
         $info['numeral'] = $numericSquare;
-        if ($this->isEmptySquare($numericSquare)) {
+        if ($this->isEmptySquare($square)) {
             $info['color'] = \null;
             $info['piece'] = \null;
         } else {
