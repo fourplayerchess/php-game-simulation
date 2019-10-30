@@ -217,7 +217,7 @@ class Helper
      *
      * @return bool Returns the threat response.
      */
-    public static function isKingThreat(string $square1, string $square2): bool
+    public function isKingThreat(string $square1, string $square2): bool
     {
         $x1 = $this->convertLetters[$square1[0]];
         $x2 = $this->convertLetters[$square2[0]];
@@ -258,7 +258,7 @@ class Helper
      *
      * @return bool Returns the threat response.
      */
-    public static function isQueenThreat(string $square1, string $square2): bool
+    public function isQueenThreat(string $square1, string $square2): bool
     {
         return $this->isRookThreat($square1, $square2) || $this->isBishopThreat($square1, $square2);
     }
