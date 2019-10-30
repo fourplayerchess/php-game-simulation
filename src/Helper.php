@@ -182,4 +182,41 @@ class Helper
     {
         return \array_search($square, $this->numericAlphabeticSquares);
     }
+
+    /**
+     * Check to see if both squares match a knight threat.
+     *
+     * @param string $square1 The square1 to work with.
+     * @param string $square2 The square2 to work with.
+     *
+     * @return mixed Returns the threat response.
+     */
+    public function isKnightThreat(string $square1, string $square2): bool
+    {
+        $letterA = $this->convertLetters[$square1[0]];
+        $letterB = $this->convertLetters[$square2[0]];
+        $numberA = \intval($square1[1]);
+        $numberB = \intval($square2[1]);
+        $xA = $letterA + 2;
+        $xB = $letterA - 2;
+        $yA = $numberA + 1;
+        $yB = $numberA - 1;
+        if ($xA == $letterB && $yA == $numberB ||
+            $xA == $letterB && $yB == $numberB ||
+            $xB == $letterB && $yA == $numberB ||
+            $xB == $letterB && $yA == $numberB) {
+            return \true;
+        }
+        $xA = $letterA + 1;
+        $xB = $letterA - 1;
+        $yA = $numberA + 2;
+        $yB = $numberA - 2;
+        if ($yA == $numberB && $yA == $letterB ||
+            $yA == $numberB && $yB == $numberB ||
+            $yB == $numberB && $yA == $numberB ||
+            $yB == $numberB && $yA == $numberB) {
+            return \true;
+        }
+        return \false;
+    }
 }
