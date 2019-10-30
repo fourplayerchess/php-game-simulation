@@ -481,7 +481,7 @@ class Helper
      * @param string $square1 The square1 to work with.
      * @param string $square2 The square2 to work with.
      * @param string $color   What color are we checking.
-     * @param string $include Should we include everything.
+     * @param bool   $include Should we include everything.
      *
      * @return bool Returns the threat response.
      */
