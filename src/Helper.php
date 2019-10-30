@@ -582,11 +582,6 @@ class Helper
                     return $this->isEmptySquare($square2);
                 }
             }
-            if (\in_array($square1, $this->moveTwoSquares)) {
-                if ($yA == $y2 && $x1 == $x2) {
-                    return $this->isEmptySquare($square2);
-                }
-            }
             return \false;
         }
         if ($color == 'R') {
@@ -602,7 +597,7 @@ class Helper
             $y_1 = $y1 + 1;
             $y_2 = $y1 - 1;
             if ($x == $x2 && $y_1 == $y2 || $x == $x2 && $y_2 == $y2) {
-                return true;
+                return \true;
             }
             return \false;
             
