@@ -564,15 +564,13 @@ class Helper
                 return \true;
             }
             return \false;
-        } elseif ($info['color'] == 'G') {
+        } else {
             $x = $x1 - 1;
             $y_1 = $y1 + 1;
             $y_2 = $y1 - 1;
             if ($x == $x2 && $y_1 == $y2 || $x == $x2 && $y_2 == $y2) {
                 return \true;
             }
-            return \false;
-        } else {
             return \false;
         }
     }
