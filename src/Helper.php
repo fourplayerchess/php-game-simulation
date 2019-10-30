@@ -472,19 +472,19 @@ class Helper
      *
      * @param string $square1 The square1 to work with.
      * @param string $square2 The square2 to work with.
-     * @param string $color   What color are we checking.
      * @param bool   $include Should we include everything.
      *
      * @return bool Returns the threat response.
      */
-    public function isPawnThreat(string $square1, string $square2, string $color = 'R', $include = \true): bool
+    public function isPawnThreat(string $square1, string $square2, bool $include = \true): bool
     {
+        $info = $this->getSquareInfo($square1);
         $x1 = $this->convertLetters[$square1[0]];
         $x2 = $this->convertLetters[$square2[0]];
         $y1 = \intval(\substr($square1, 1));
         $y2 = \intval(\substr($square2, 1));
         if ($include) {
-            if ($color == 'R') {
+            if ($info['color'] == 'R') {
                 $yA = $y1 + 2;
                 $yB = $y1 + 1;
                 $xA = $x1 + 1;
@@ -497,7 +497,7 @@ class Helper
                 if ($yB == $y2 && $xA == $x2 || $yB == $y2 && $xB == $x2) {
                     return $this->isEmptySquare($square2);
                 }
-            } elseif ($color == 'B') {
+            } elseif ($info['color'] == 'B') {
                 $yA = $y1 + 1;
                 $yB = $y1 - 1;
                 $xA = $x1 + 2;
@@ -510,7 +510,7 @@ class Helper
                 if ($xB == $x2 && $yA == $y2 || $xB == $x2 && $yB == $y2) {
                     return $this->isEmptySquare($square2);
                 }
-            } elseif ($color == 'Y') {
+            } elseif ($info['color'] == 'Y') {
                 $yA = $y1 - 2;
                 $yB = $y1 - 1;
                 $xA = $x1 + 1;
@@ -539,7 +539,7 @@ class Helper
             }
             return \false;
         }
-        if ($color == 'R') {
+        if ($info['color'] == 'R') {
             $y = $y1 + 1;
             $x_1 = $x1 + 1;
             $x_2 = $x1 - 1;
@@ -547,7 +547,7 @@ class Helper
                 return \true;
             }
             return \false;
-        } elseif ($color == 'B') {
+        } elseif ($info['color'] == 'B') {
             $x = $x1 + 1;
             $y_1 = $y1 + 1;
             $y_2 = $y1 - 1;
@@ -556,7 +556,7 @@ class Helper
             }
             return \false;
             
-        } elseif ($color == 'Y') {
+        } elseif ($info['color'] == 'Y') {
             $y = $y1 - 1;
             $x_1 = $x1 + 1;
             $x_2 = $x1 - 1;
@@ -564,7 +564,7 @@ class Helper
                 return \true;
             }
             return \false;
-        } elseif ($color == 'G') {
+        } elseif ($info['color'] == 'G') {
             $x = $x1 - 1;
             $y_1 = $y1 + 1;
             $y_2 = $y1 - 1;
