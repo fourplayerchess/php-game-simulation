@@ -204,17 +204,17 @@ class Helper
         if ($xA == $letterB && $yA == $numberB ||
             $xA == $letterB && $yB == $numberB ||
             $xB == $letterB && $yA == $numberB ||
-            $xB == $letterB && $yA == $numberB) {
+            $xB == $letterB && $yB == $numberB) {
             return \true;
         }
         $xA = $letterA + 1;
         $xB = $letterA - 1;
         $yA = $numberA + 2;
         $yB = $numberA - 2;
-        if ($yA == $numberB && $yA == $letterB ||
-            $yA == $numberB && $yB == $numberB ||
-            $yB == $numberB && $yA == $numberB ||
-            $yB == $numberB && $yA == $numberB) {
+        if ($yA == $numberB && $xA == $letterB ||
+            $yA == $numberB && $xB == $numberB ||
+            $yB == $numberB && $xA == $numberB ||
+            $yB == $numberB && $xB == $numberB) {
             return \true;
         }
         return \false;
