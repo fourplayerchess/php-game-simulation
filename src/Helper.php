@@ -41,6 +41,32 @@ class Helper
         'n7'  => ['n9'  => \true, 'n5'  => \true,],
     ];
 
+    /**
+     * @var array $moveTwoSquares A list of square to allow two space moves for pawns.
+     */
+    private static $moveTwoSquares = [
+        'd2',  'e2',  'f2',  'g2',  'h2',  'i2',  'j2',  'k2',
+        'b4',  'b5',  'b6',  'b7',  'b8',  'b9',  'b10', 'b11',
+        'd13', 'e13', 'f13', 'g13', 'h13', 'i13', 'j13', 'k13',
+        'm4',  'm5',  'm6',  'm7',  'm8',  'm9',  'm10', 'm11',
+    ];
+
+     /**
+     * @var array $convertLetters Translate a letter to a number.
+     */
+    private $convertLetters = [
+        'a' => 1, 'b' => 2, 'c' => 3,  'd' => 4,  'e' => 5,  'f' => 6,  'g' => 7,
+        'h' => 8, 'i' => 9, 'j' => 10, 'k' => 11, 'l' => 12, 'm' => 13, 'n' => 14,
+    ];
+
+    /**
+     * @var array $convertNumbers Translate a number to a letter.
+     */
+    private $convertNumbers = [
+        1  => 'a', 2  => 'b', 3  => 'c', 4  => 'd', 5  => 'e', 6  => 'f', 7  => 'g',
+        8  => 'h', 9  => 'i', 10 => 'j', 11 => 'k', 12 => 'l', 13 => 'm', 14 => 'n',
+    ];
+
     /** @var array $convertPromotionPiece Convert the promotion piece. */
     private $convertPromotionPiece = ['P' => 0, 'N' => 1, 'B' => 2, 'R' => 3, 'Q' => 4, 'K' => 5,];
 
@@ -184,6 +210,235 @@ class Helper
     }
 
     /**
+     * Check to see if both squares match a king threat.
+     *
+     * @param string $square1 The square1 to work with.
+     * @param string $square2 The square2 to work with.
+     *
+     * @return bool Returns the threat response.
+     */
+    public static function isKingThreat(string $square1, string $square2): bool
+    {
+        $x1 = $this->convertLetters[$square1[0]];
+        $x2 = $this->convertLetters[$square2[0]];
+        $y1 = \intval($square1[1]);
+        $y2 = \intval($square2[1]);
+        if ($x1 > $x2) {
+            $spaces_1 = $x1 - $x2;
+            if ($spaces_1 != 1) {
+                return \false;
+            }
+        }
+        if ($x2 > $x1) {
+            $spaces_2 = $x2 - $x1;
+            if ($spaces_2 != 1) {
+                return \false;
+            }
+        }
+        if ($y1 > $y2) {
+            $spaces_3 = $y1 - $y2;
+            if ($spaces_3 != 1) {
+                return \false;
+            }
+        }
+        if ($y2 > $y1) {
+            $spaces_4 = $y2 - $y1;
+            if ($spaces_4 != 1) {
+                return \false;
+            }
+        }
+        return \true;
+    }
+
+    /**
+     * Check to see if both squares match a queen threat.
+     *
+     * @param string $square1 The square1 to work with.
+     * @param string $square2 The square2 to work with.
+     *
+     * @return bool Returns the threat response.
+     */
+    public static function isQueenThreat(string $square1, string $square2): bool
+    {
+        return $this->isRookThreat($square1, $square2) || $this->isBishopThreat($square1, $square2);
+    }
+
+    /**
+     * Check to see if both squares match a rook threat.
+     *
+     * @param string $square1 The square1 to work with.
+     * @param string $square2 The square2 to work with.
+     *
+     * @return bool Returns the threat response.
+     */
+    public function isRookThreat(string $square1, string $square2): bool
+    {
+        $x1 = $this->convertLetters[$square1[0]];
+        $x2 = $this->convertLetters[$square2[0]];
+        $y1 = \intval($square1[1]);
+        $y2 = \intval($square2[1]);
+        if ($x1 == $x2) {
+            if ($y1 > $y2) {
+                $spaces = $y1 - $y2;
+                if ($spaces > 1) {
+                    $i = 1; 
+                    while ($spaces != 1) {
+                        $x = $x1;
+                        $y = \strval($y1 - $i);
+                        if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
+                            return \false;
+                        }
+                        $spaces--;
+                        $i++;
+                    }
+                }
+                return \true;
+            }
+            if ($y2 > $y1) {
+                $spaces = $y2 - $y1;
+                if ($spaces > 1) {
+                    $i = 1; 
+                    while ($spaces != 1) {
+                        $x = $x1;
+                        $y = \strval($y1 + $i);
+                        if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
+                            return \false;
+                        }
+                        $spaces--;
+                        $i++;
+                    }
+                }
+                return \true;
+            }
+        } elseif ($y1 == $y2) {
+            if ($x1 > $x2) {
+                $spaces = $x1 - $x2;
+                if ($spaces > 1) {
+                    $i = 1; 
+                    while ($spaces != 1) {
+                        $x = $x1 - $i;
+                        $y = \strval($y1);
+                        if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
+                            return \false;
+                        }
+                        $spaces--;
+                        $i++;
+                    }
+                }
+                return \true;
+            }
+            if ($x2 > $x1) {
+                $spaces = $x2 - $x1;
+                if ($spaces > 1) {
+                    $i = 1; 
+                    while ($spaces != 1) {
+                        $x = $x1 + $i;
+                        $y = \strval($y1);
+                        if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
+                            return \false;
+                        }
+                        $spaces--;
+                        $i++;
+                    }
+                }
+                return \true;
+            }
+        }
+        return \false;
+    }
+
+    /**
+     * Check to see if both squares match a bishop threat.
+     *
+     * @param string $square1 The square1 to work with.
+     * @param string $square2 The square2 to work with.
+     *
+     * @return bool Returns the threat response.
+     */
+    public function isBishopThreat(string $square1, string $square2): bool
+    {
+        $x1 = $this->convertLetters[$square1[0]];
+        $x2 = $this->convertLetters[$square2[0]];
+        $y1 = \intval($square1[1]);
+        $y2 = \intval($square2[1]);
+        if ($x1 > $x2) {
+            $spaces_x = $x1 - $x2;
+            if ($y1 > $y2) {
+                $spaces_y = $y1 - $y2;
+                if ($spaces_x == $spaces_y) {
+                    $spaces = $spaces_x;
+                    $i = 1; 
+                    while ($spaces != 1) {
+                        $x = $x1 - $i;
+                        $y = \strval($y1 - $i);
+                        if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
+                            return \false;
+                        }
+                        $spaces--;
+                        $i++;
+                    }
+                    return \true;
+                }
+            }
+            if ($y2 > $y1) {
+                $spaces_y = $y2 - $y1;
+                if ($spaces_x == $spaces_y) {
+                    $spaces = $spaces_x;
+                    $i = 1; 
+                    while ($spaces != 1) {
+                        $x = $x1 - $i;
+                        $y = \strval($y1 + $i);
+                        if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
+                            return \false;
+                        }
+                        $spaces--;
+                        $i++;
+                    }
+                    return \true;
+                }
+            }
+            return \false;
+        } elseif ($x2 > $x1) {
+            $spaces_x = $x2 - $x1;
+            if ($y1 > $y2) {
+                $spaces_y = $y1 - $y2;
+                if ($spaces_x == $spaces_y) {
+                    $spaces = $spaces_x;
+                    $i = 1; 
+                    while ($spaces != 1) {
+                        $x = $x1 + $i;
+                        $y = \strval($y1 - $i);
+                        if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
+                            return \false;
+                        }
+                        $spaces--;
+                        $i++;
+                    }
+                    return \true;
+                }
+            }
+            if ($y2 > $y1) {
+                $spaces_y = $y2 - $y1;
+                if ($spaces_x == $spaces_y) {
+                    $spaces = $spaces_x;
+                    $i = 1; 
+                    while ($spaces != 1) {
+                        $x = $x1 + $i;
+                        $y = \strval($y1 + $i);
+                        if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
+                            return \false;
+                        }
+                        $spaces--;
+                        $i++;
+                    }
+                    return \true;
+                }
+            }
+        }
+        return \false;
+    }
+
+    /**
      * Check to see if both squares match a knight threat.
      *
      * @param string $square1 The square1 to work with.
@@ -218,5 +473,157 @@ class Helper
             return \true;
         }
         return \false;
+    }
+
+    /**
+     * Check to see if both squares match a knight threat.
+     *
+     * @param string $square1 The square1 to work with.
+     * @param string $square2 The square2 to work with.
+     *
+     * @return bool Returns the threat response.
+     */
+    public function isKnightThreat(string $square1, string $square2): bool
+    {
+        $letterA = $this->convertLetters[$square1[0]];
+        $letterB = $this->convertLetters[$square2[0]];
+        $numberA = \intval($square1[1]);
+        $numberB = \intval($square2[1]);
+        $xA = $letterA + 2;
+        $xB = $letterA - 2;
+        $yA = $numberA + 1;
+        $yB = $numberA - 1;
+        if ($xA == $letterB && $yA == $numberB ||
+            $xA == $letterB && $yB == $numberB ||
+            $xB == $letterB && $yA == $numberB ||
+            $xB == $letterB && $yB == $numberB) {
+            return \true;
+        }
+        $xA = $letterA + 1;
+        $xB = $letterA - 1;
+        $yA = $numberA + 2;
+        $yB = $numberA - 2;
+        if ($yA == $numberB && $xA == $letterB ||
+            $yA == $numberB && $xB == $numberB ||
+            $yB == $numberB && $xA == $numberB ||
+            $yB == $numberB && $xB == $numberB) {
+            return \true;
+        }
+        return \false;
+    }
+
+    /**
+     * Check to see if both squares match a pawn threat.
+     *
+     * @param string $square1 The square1 to work with.
+     * @param string $square2 The square2 to work with.
+     * @param string $color   What color are we checking.
+     * @param string $include Should we include everything.
+     *
+     * @return bool Returns the threat response.
+     */
+    public static function isPawnThreat(string $square1, string $square2, string $color = 'R', $include = \true): bool
+    {
+        $x1 = $this->convertLetters[$square1[0]];
+        $x2 = $this->convertLetters[$square2[0]];
+        $y1 = \intval($square1[1]);
+        $y2 = \intval($square2[1]);
+        if ($include) {
+            if ($color == 'R') {
+                $yA = $y1 + 2;
+                $yB = $y1 + 1;
+                $xA = $x1 + 1;
+                $xB = $x1 - 1;
+                if (\in_array($square1, $this->moveTwoSquares)) {
+                    if ($yA == $y2 && $x1 == $x2) {
+                        return $this->isEmptySquare($square2);
+                    }
+                }
+                if ($yB == $y2 && $xA == $x2 || $yB == $y2 && $xB == $x2) {
+                    return $this->isEmptySquare($square2);
+                }
+            } elseif ($color == 'B') {
+                $yA = $y1 + 1;
+                $yB = $y1 - 1;
+                $xA = $x1 + 2;
+                $xB = $x1 + 1;
+                if (\in_array($square1, $this->moveTwoSquares)) {
+                    if ($xA == $x2 && $y1 == $y2) {
+                        return $this->isEmptySquare($square2);
+                    }
+                }
+                if ($xB == $x2 && $yA == $y2 || $xB == $x2 && $yB == $y2) {
+                    return $this->isEmptySquare($square2);
+                }
+            } elseif () {
+                $yA = $y1 - 2;
+                $yB = $y1 - 1;
+                $xA = $x1 + 1;
+                $xB = $x1 - 1;
+                if (\in_array($square1, $this->moveTwoSquares)) {
+                    if ($yA == $y2 && $x1 == $x2) {
+                        return $this->isEmptySquare($square2);
+                    }
+                }
+                if ($yB == $y2 && $xA == $x2 || $yB == $y2 && $xB == $x2) {
+                    return $this->isEmptySquare($square2);
+                }
+            } else {
+                $yA = $y1 - 1;
+                $yB = $y1 + 1;
+                $xA = $x1 - 2;
+                $xB = $x1 - 1;
+                if (\in_array($square1, $this->moveTwoSquares)) {
+                    if ($xA == $x2 && $y1 == $y2) {
+                        return $this->isEmptySquare($square2);
+                    }
+                }
+                if ($xB == $x2 && $yA == $y2 || $xB == $x2 && $yB == $y2) {
+                    return $this->isEmptySquare($square2);
+                }
+            }
+            if (\in_array($square1, $this->moveTwoSquares)) {
+                if ($yA == $y2 && $x1 == $x2) {
+                    return $this->isEmptySquare($square2);
+                }
+            }
+            return \false;
+        }
+        if ($color == 'R') {
+            $y = $y1 + 1;
+            $x_1 = $x1 + 1;
+            $x_2 = $x1 - 1;
+            if ($x_1 == $x2 && $y == $y2 || $x_2 == $x2 && $y == $y2) {
+                return \true;
+            }
+            return \false;
+        } elseif ($color == 'B') {
+            $x = $x1 + 1;
+            $y_1 = $y1 + 1;
+            $y_2 = $y1 - 1;
+            if ($x == $x2 && $y_1 == $y2 || $x == $x2 && $y_2 == $y2) {
+                return true;
+            }
+            return \false;
+            
+        } elseif ($color == 'Y') {
+            $y = $y1 - 1;
+            $x_1 = $x1 + 1;
+            $x_2 = $x1 - 1;
+            if ($x_1 == $x2 && $y == $y2 || $x_2 == $x2 && $y == $y2) {
+                return \true;
+            }
+            return \false;
+        } elseif ($color == 'G') {
+            $x = $x1 - 1;
+            $y_1 = $y1 + 1;
+            $y_2 = $y1 - 1;
+            if ($x == $x2 && $y_1 == $y2 || $x == $x2 && $y_2 == $y2) {
+                return \true;
+            }
+            return \false;
+        } else {
+            return \false;
+        }
     }
 }
