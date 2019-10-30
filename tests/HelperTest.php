@@ -140,4 +140,192 @@ class HelperTest extends TestCase
         $this->assertTrue(!$info11);
         $this->assertTrue(!$info12);
     }
+
+    /**
+     * @return void Returns nothing.
+     */
+    public function testThreatFunctions(): void
+    {
+        $helper = new Helper();
+        $data = [
+            'a5' => [
+                'c4' => \true,
+                'c6' => \true,
+                'b7' => \true,
+                'c7' => \false,
+                'd5' => \false,
+            ],
+            'e14' => [
+                'd12' => \true,
+                'f12' => \true,
+                'g13' => \true,
+                'g12' => \false,
+                'f8'  => \false,
+            ],
+            'n5' => [
+                'l4' => \true,
+                'l6' => \true,
+                'm7' => \true,
+                'm8' => \false,
+                'n8' => \false,
+            ],
+            'j1' => [
+                'k3' => \true,
+                'i3' => \true,
+                'h2' => \true,
+                'h3' => \false,
+                'h4' => \false,
+            ],
+        ];
+        foreach ($data as $from => $info) {
+            foreach ($info as $to => $res) {
+                $isThreat = $helper->isKingThreat($from, $to);
+                $this->assertTrue($res == $isThreat);
+            }
+        }
+        $data = [
+            'a4' => [
+                'b4' => \true,
+                'a5' => \true,
+                'l4' => \false,
+                'a7' => \false,
+                'a6' => \false,
+            ],
+            'k14' => [
+                'k13' => \true,
+                'j14' => \true,
+                'j13' => \false,
+                'f14' => \false,
+                'k3'  => \false,
+            ],
+            'n4' => [
+                'n5' => \true,
+                'm4' => \true,
+                'm5' => \false,
+                'c4' => \false,
+                'n8' => \false,
+            ],
+            'k1' => [
+                'j1'  => \true,
+                'k2'  => \true,
+                'k3'  => \false,
+                'k12' => \false,
+                'd1'  => \false,
+            ],
+        ];
+        foreach ($data as $from => $info) {
+            foreach ($info as $to => $res) {
+                $isThreat = $helper->isRookThreat($from, $to);
+                $this->assertTrue($res == $isThreat);
+            }
+        }
+        $data = [
+            'b4' => [
+                'a5'  => \true,
+                'k13' => \true,
+                'd2'  => \false,
+                'c4'  => \false,
+                'a6'  => \false,
+            ],
+            'k2' => [
+                'b11' => \true,
+                'j1'  => \true,
+                'm4'  => \false,
+                'b4'  => \false,
+                'd2'  => \false,
+            ],
+            'm11' => [
+                'd2'  => \true,
+                'n10' => \true,
+                'k13' => \false,
+                'c4'  => \false,
+                'm4'  => \false,
+            ],
+            'd13' => [
+                'e14' => \true,
+                'm4'  => \true,
+                'b11' => \false,
+                'b8'  => \false,
+                'b7'  => \false,
+            ],
+        ];
+        foreach ($data as $from => $info) {
+            foreach ($info as $to => $res) {
+                $isThreat = $helper->isBishopThreat($from, $to);
+                $this->assertTrue($res == $isThreat);
+            }
+        }
+        $data = [
+            'a5' => [
+                'c4' => \true,
+                'c6' => \true,
+                'b7' => \true,
+                'c7' => \false,
+                'd5' => \false,
+            ],
+            'e14' => [
+                'd12' => \true,
+                'f12' => \true,
+                'g13' => \true,
+                'g12' => \false,
+                'f8'  => \false,
+            ],
+            'n5' => [
+                'l4' => \true,
+                'l6' => \true,
+                'm7' => \true,
+                'm8' => \false,
+                'n8' => \false,
+            ],
+            'j1' => [
+                'k3' => \true,
+                'i3' => \true,
+                'h2' => \true,
+                'h3' => \false,
+                'h4' => \false,
+            ],
+        ];
+        foreach ($data as $from => $info) {
+            foreach ($info as $to => $res) {
+                $isThreat = $helper->isKnightThreat($from, $to);
+                $this->assertTrue($res == $isThreat);
+            }
+        }
+        $data = [
+            'b6' => [
+                'c7' => \true,
+                'c5' => \true,
+                'c6' => \false,
+                'a7' => \false,
+                'a5' => \false,
+            ],
+            'f13' => [
+                'e12' => \true,
+                'g12' => \true,
+                'f12' => \false,
+                'e14' => \false,
+                'g14' => \false,
+            ],
+            'h2' => [
+                'i3' => \true,
+                'g3' => \true,
+                'h3' => \false,
+                'i1' => \false,
+                'g1' => \false,
+            ],
+            'm7' => [
+                'l8' => \true,
+                'l6' => \true,
+                'l7' => \false,
+                'n8' => \false,
+                'n6' => \false,
+            ],
+        ];
+        foreach ($data as $from => $info) {
+            foreach ($info as $to => $res) {
+                $isThreat = $helper->isPawnThreat($from, $to);
+                $this->assertTrue($res == $isThreat);
+            }
+        }
+    }
 }
