@@ -189,7 +189,7 @@ class Helper
      * @param string $square1 The square1 to work with.
      * @param string $square2 The square2 to work with.
      *
-     * @return mixed Returns the threat response.
+     * @return bool Returns the threat response.
      */
     public function isKnightThreat(string $square1, string $square2): bool
     {
