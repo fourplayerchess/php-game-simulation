@@ -25,7 +25,7 @@ class Helper
 
     /** @var array $piecesReturn Revert the numeric piece value back to its
      *                           string repensentation. */
-    private $piecesReturn = ['P', 'N', 'B', 'Q', 'K',];
+    private $piecesReturn = ['P', 'N', 'B', 'R', 'Q', 'K',];
 
     /** @var array $colors Convert the colors to a numeric repensation. */
     private $colors = ['R' => 0, 'B' => 1, 'Y' => 2, 'G' => 3,];
