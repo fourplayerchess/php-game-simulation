@@ -5,3 +5,5 @@ Simulate 4 player chess games through PHP code.
 ## Contributing
 All contributions are welcome! If you wish to contribute.
 ## License
+fourplayerchess/php-game-simulation is licensed under the
+`GNU General Public License v3.0`
