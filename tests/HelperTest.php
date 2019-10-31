@@ -212,6 +212,12 @@ class HelperTest extends TestCase
                 'k12' => \false,
                 'd1'  => \false,
             ],
+            'd4' => [
+                'd11' => \true,
+                'k4'  => \true,
+                'd14' => \false,
+                'n4'  => \false,
+            ]
         ];
         foreach ($data as $from => $info) {
             foreach ($info as $to => $res) {
