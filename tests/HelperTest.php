@@ -175,6 +175,7 @@ class HelperTest extends TestCase
                 'm7' => \true,
                 'm5' => \false,
                 'n5' => \false,
+                'a7' => \false,
             ],
         ];
         foreach ($data as $from => $info) {
@@ -217,7 +218,13 @@ class HelperTest extends TestCase
                 'k4'  => \true,
                 'd14' => \false,
                 'n4'  => \false,
-            ]
+            ],
+            'k11' => [
+                'k4'  => \true,
+                'd11' => \true,
+                'k1'  => \false,
+                'a11' => \false,
+            ],
         ];
         foreach ($data as $from => $info) {
             foreach ($info as $to => $res) {
