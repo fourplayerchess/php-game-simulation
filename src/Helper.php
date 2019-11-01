@@ -31,10 +31,10 @@ class Helper
     private $colors = ['R' => 0, 'B' => 1, 'Y' => 2, 'G' => 3,];
 
     /** @var array $enpassants The enpassant codes. */
-    private $enpassants = ['R' => '-', 'B' => '-', 'Y' => '-', 'G' => '-',];
+    public $enpassants = ['R' => '-', 'B' => '-', 'Y' => '-', 'G' => '-',];
 
     /** @var array The castling rights. */
-    private $castling = [
+    public $castling = [
         'h1'  => ['f1'  => \true, 'j1'  => \true,],
         'a8'  => ['a6'  => \true, 'a10' => \true,],
         'g14' => ['i14' => \true, 'e14' => \true,],
@@ -64,10 +64,16 @@ class Helper
     /** @var array $convertPromotionPiece Convert the promotion piece. */
     private $convertPromotionPiece = ['P' => 0, 'N' => 1, 'B' => 2, 'R' => 3, 'Q' => 4, 'K' => 5,];
 
-    /** @var string The current move turn. */
-    private $turn = 'R';
+    /** @var string $turn The current move turn. */
+    public $turn = 'R';
 
-      /** @var array $numericAlphabeticSquares The 4 player chess numeric alphabetic squares. */
+    /** @var int $moveNumber The move number. */
+    public $moveNumber = 1;
+
+    /** @var int $halfMoves The move number. */
+    public $halfMoves = 0;
+
+    /** @var array $numericAlphabeticSquares The 4 player chess numeric alphabetic squares. */
     private $numericAlphabeticSquares = [
                              'd14', 'e14', 'f14', 'g14', 'h14', 'i14', 'j14', 'k14',
                              'd13', 'e13', 'f13', 'g13', 'h13', 'i13', 'j13', 'k13',
@@ -86,7 +92,7 @@ class Helper
     ];
 
     /** @var array $board The 4 player chess board. */
-    private $board = [
+    public $board = [
         [2, 3,], [2, 1,], [2, 2,], [2, 5,], [2, 4,], [2, 2,], [2, 1,], [2, 3,],
         [2, 0,], [2, 0,], [2, 0,], [2, 0,], [2, 0,], [2, 0,], [2, 0,], [2, 0,],
                              0, 0, 0, 0, 0, 0, 0, 0,
