@@ -52,7 +52,27 @@ class Helper
         'm4',  'm5',  'm6',  'm7',  'm8',  'm9',  'm10', 'm11',
     ];
 
-     /** @var array $convertLetters Translate a letter to a number. */
+    /** @var array $opositeColors The list of opposite colors. */
+    public $oppositeColors = [
+        'R' => [
+            'B',
+            'G',
+        ],
+        'B' => [
+            'R',
+            'Y',
+        ],
+        'Y' => [
+            'B',
+            'G',
+        ],
+        'G' => [
+            'R',
+            'Y',
+        ],
+    ];
+
+    /** @var array $convertLetters Translate a letter to a number. */
     private $convertLetters = [
         'a' => 1, 'b' => 2, 'c' => 3,  'd' => 4,  'e' => 5,  'f' => 6,  'g' => 7,
         'h' => 8, 'i' => 9, 'j' => 10, 'k' => 11, 'l' => 12, 'm' => 13, 'n' => 14,
