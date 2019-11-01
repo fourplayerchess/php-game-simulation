@@ -61,8 +61,27 @@ class Helper
         8  => 'h', 9  => 'i', 10 => 'j', 11 => 'k', 12 => 'l', 13 => 'm', 14 => 'n',
     ];
 
-    /** @var array $convertPromotionPiece Convert the promotion piece. */
-    private $convertPromotionPiece = ['P' => 0, 'N' => 1, 'B' => 2, 'R' => 3, 'Q' => 4, 'K' => 5,];
+    /**
+     * @var array $promotionSquares The promotion squares.
+     */
+    public $promotionSquares = [
+        'R' => [
+            'a11', 'b11', 'c11', 'd11', 'e11', 'f11', 'g11',
+            'h11', 'i11', 'j11', 'k11', 'l11', 'm11', 'n11',
+        ],
+        'B' => [
+            'k1',  'k2',  'k3',  'k4',  'k5',  'k6',  'k7',
+            'k8',  'k9',  'k10', 'k11', 'k12', 'k13', 'k14',
+        ],
+        'Y' => [
+            'a4',  'b4',  'c4',  'd4',  'e4',  'f4',  'g4',
+            'h4',  'i4',  'j4',  'k4',  'l4',  'm4',  'n4',
+        ],
+        'G' => [
+            'd1',  'd2',  'd3',  'd4',  'd5',  'd6',  'd7',
+            'd8',  'd9',  'd10', 'd11', 'd12', 'd13', 'd14',
+        ],
+    ];
 
     /** @var string $turn The current move turn. */
     public $turn = 'R';
