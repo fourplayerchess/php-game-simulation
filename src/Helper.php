@@ -33,6 +33,9 @@ class Helper
     /** @var array $enpassants The enpassant codes. */
     public $enpassants = ['R' => '-', 'B' => '-', 'Y' => '-', 'G' => '-',];
 
+    /** @var array $convertPromotionPiece Convert the promotion piece. */
+    public $convertPromotionPiece = ['N' => 1, 'B' => 2, 'R' => 3, 'Q' => 4,];
+
     /** @var array The castling rights. */
     public $castling = [
         'h1'  => ['f1'  => \true, 'j1'  => \true,],
