@@ -34,6 +34,26 @@ class Helper
     /** @var array $convertPromotionPiece Convert the promotion piece. */
     public $convertPromotionPiece = ['N' => 1, 'B' => 2, 'R' => 3, 'Q' => 4,];
 
+    /** @var array $ksRookSquare The rook to squares (kingside). */
+    public $ksRookTo = [
+        'R' => ['i1',], 'B' => ['a9',], 'Y' => ['f14',], 'G' => ['n6',],
+    ];
+
+    /** @var array $qsRookSquare The rook to squares (queenside). */
+    public $qsRookTo = [
+        'R' => ['g1',], 'B' => ['a7',], 'Y' => ['h14',], 'G' => ['n8',],
+    ];
+
+    /** @var array $ksRookSquare The rook from squares (kingside). */
+    public $ksRookSquare = [
+        'R' => ['k1',], 'B' => ['a11',], 'Y' => ['d14',], 'G' => ['n4',],
+    ];
+
+    /** @var array $qsRookSquare The rook from squares (queenside). */
+    public $qsRookSquare = [
+        'R' => ['d1',], 'B' => ['a4',], 'Y' => ['k14',], 'G' => ['n11',],
+    ];
+
     /** @var array The castling rights. */
     public $castling = [
         'h1'  => ['f1'  => true, 'j1'  => true,],
