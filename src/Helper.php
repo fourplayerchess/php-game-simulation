@@ -19,12 +19,10 @@ namespace FourPlayerChess;
  */
 class Helper
 {
-    /** @var array $colorsReturn Revert the numeric color value back to its
-     *                           string repensentation. */
+    /** @var array $colorsReturn Revert the numeric color value back to its string repensentation. */
     private $colorsReturn = ['R', 'B', 'Y', 'G',];
 
-    /** @var array $piecesReturn Revert the numeric piece value back to its
-     *                           string repensentation. */
+    /** @var array $piecesReturn Revert the numeric piece value back to its string repensentation. */
     private $piecesReturn = ['P', 'N', 'B', 'R', 'Q', 'K',];
 
     /** @var array $colors Convert the colors to a numeric repensation. */
@@ -38,10 +36,10 @@ class Helper
 
     /** @var array The castling rights. */
     public $castling = [
-        'h1'  => ['f1'  => \true, 'j1'  => \true,],
-        'a8'  => ['a6'  => \true, 'a10' => \true,],
-        'g14' => ['i14' => \true, 'e14' => \true,],
-        'n7'  => ['n9'  => \true, 'n5'  => \true,],
+        'h1'  => ['f1'  => true, 'j1'  => true,],
+        'a8'  => ['a6'  => true, 'a10' => true,],
+        'g14' => ['i14' => true, 'e14' => true,],
+        'n7'  => ['n9'  => true, 'n5'  => true,],
     ];
 
     /** @var array $moveTwoSquares A list of square to allow two space moves for pawns.*/
@@ -206,14 +204,14 @@ class Helper
      */
     public function getSquareInfo($square) {
         $numericSquare = $this->isNotOffBoardSquare($square);
-        if (!\is_int($numericSquare)) {
-            return \false;
+        if (!is_int($numericSquare)) {
+            return false;
         }
         $info = [];
         $info['numeral'] = $numericSquare;
         if ($this->isEmptySquare($square)) {
-            $info['color'] = \null;
-            $info['piece'] = \null;
+            $info['color'] = null;
+            $info['piece'] = null;
         } else {
             $info['color'] = $this->colorsReturn[$this->board[$numericSquare][0]];
             $info['piece'] = $this->piecesReturn[$this->board[$numericSquare][1]];
@@ -231,10 +229,10 @@ class Helper
     public function isEmptySquare(string $square): bool
     {
         $numericSquare = $this->isNotOffBoardSquare($square);
-        if (\is_int($numericSquare)) {
-            return !\is_array($this->board[$numericSquare]);
+        if (is_int($numericSquare)) {
+            return !is_array($this->board[$numericSquare]);
         }
-        return \false;
+        return false;
     }
 
     /**
@@ -246,7 +244,7 @@ class Helper
      */
     public function isNotOffBoardSquare(string $square)
     {
-        return \array_search($square, $this->numericAlphabeticSquares);
+        return array_search($square, $this->numericAlphabeticSquares);
     }
 
     /**
@@ -261,33 +259,33 @@ class Helper
     {
         $x1 = $this->convertLetters[$square1[0]];
         $x2 = $this->convertLetters[$square2[0]];
-        $y1 = \intval(\substr($square1, 1));
-        $y2 = \intval(\substr($square2, 1));
+        $y1 = intval(substr($square1, 1));
+        $y2 = intval(substr($square2, 1));
         if ($x1 > $x2) {
             $spaces_1 = $x1 - $x2;
             if ($spaces_1 != 1) {
-                return \false;
+                return false;
             }
         }
         if ($x2 > $x1) {
             $spaces_2 = $x2 - $x1;
             if ($spaces_2 != 1) {
-                return \false;
+                return false;
             }
         }
         if ($y1 > $y2) {
             $spaces_3 = $y1 - $y2;
             if ($spaces_3 != 1) {
-                return \false;
+                return false;
             }
         }
         if ($y2 > $y1) {
             $spaces_4 = $y2 - $y1;
             if ($spaces_4 != 1) {
-                return \false;
+                return false;
             }
         }
-        return \true;
+        return true;
     }
 
     /**
@@ -315,8 +313,8 @@ class Helper
     {
         $x1 = $this->convertLetters[$square1[0]];
         $x2 = $this->convertLetters[$square2[0]];
-        $y1 = \intval(\substr($square1, 1));
-        $y2 = \intval(\substr($square2, 1));
+        $y1 = intval(substr($square1, 1));
+        $y2 = intval(substr($square2, 1));
         if ($x1 == $x2) {
             if ($y1 > $y2) {
                 $spaces = $y1 - $y2;
@@ -324,15 +322,15 @@ class Helper
                     $i = 1; 
                     while ($spaces != 1) {
                         $x = $x1;
-                        $y = \strval($y1 - $i);
+                        $y = strval($y1 - $i);
                         if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
-                            return \false;
+                            return false;
                         }
                         $spaces--;
                         $i++;
                     }
                 }
-                return \true;
+                return true;
             }
             if ($y2 > $y1) {
                 $spaces = $y2 - $y1;
@@ -340,15 +338,15 @@ class Helper
                     $i = 1; 
                     while ($spaces != 1) {
                         $x = $x1;
-                        $y = \strval($y1 + $i);
+                        $y = strval($y1 + $i);
                         if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
-                            return \false;
+                            return false;
                         }
                         $spaces--;
                         $i++;
                     }
                 }
-                return \true;
+                return true;
             }
         } elseif ($y1 == $y2) {
             if ($x1 > $x2) {
@@ -357,15 +355,15 @@ class Helper
                     $i = 1; 
                     while ($spaces != 1) {
                         $x = $x1 - $i;
-                        $y = \strval($y1);
+                        $y = strval($y1);
                         if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
-                            return \false;
+                            return false;
                         }
                         $spaces--;
                         $i++;
                     }
                 }
-                return \true;
+                return true;
             }
             if ($x2 > $x1) {
                 $spaces = $x2 - $x1;
@@ -373,18 +371,18 @@ class Helper
                     $i = 1; 
                     while ($spaces != 1) {
                         $x = $x1 + $i;
-                        $y = \strval($y1);
+                        $y = strval($y1);
                         if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
-                            return \false;
+                            return false;
                         }
                         $spaces--;
                         $i++;
                     }
                 }
-                return \true;
+                return true;
             }
         }
-        return \false;
+        return false;
     }
 
     /**
@@ -399,8 +397,8 @@ class Helper
     {
         $x1 = $this->convertLetters[$square1[0]];
         $x2 = $this->convertLetters[$square2[0]];
-        $y1 = \intval(\substr($square1, 1));
-        $y2 = \intval(\substr($square2, 1));
+        $y1 = intval(substr($square1, 1));
+        $y2 = intval(substr($square2, 1));
         if ($x1 > $x2) {
             $spaces_x = $x1 - $x2;
             if ($y1 > $y2) {
@@ -410,14 +408,14 @@ class Helper
                     $i = 1; 
                     while ($spaces != 1) {
                         $x = $x1 - $i;
-                        $y = \strval($y1 - $i);
+                        $y = strval($y1 - $i);
                         if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
-                            return \false;
+                            return false;
                         }
                         $spaces--;
                         $i++;
                     }
-                    return \true;
+                    return true;
                 }
             }
             if ($y2 > $y1) {
@@ -427,17 +425,17 @@ class Helper
                     $i = 1; 
                     while ($spaces != 1) {
                         $x = $x1 - $i;
-                        $y = \strval($y1 + $i);
+                        $y = strval($y1 + $i);
                         if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
-                            return \false;
+                            return false;
                         }
                         $spaces--;
                         $i++;
                     }
-                    return \true;
+                    return true;
                 }
             }
-            return \false;
+            return false;
         } elseif ($x2 > $x1) {
             $spaces_x = $x2 - $x1;
             if ($y1 > $y2) {
@@ -447,14 +445,14 @@ class Helper
                     $i = 1; 
                     while ($spaces != 1) {
                         $x = $x1 + $i;
-                        $y = \strval($y1 - $i);
+                        $y = strval($y1 - $i);
                         if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
-                            return \false;
+                            return false;
                         }
                         $spaces--;
                         $i++;
                     }
-                    return \true;
+                    return true;
                 }
             }
             if ($y2 > $y1) {
@@ -464,18 +462,18 @@ class Helper
                     $i = 1; 
                     while ($spaces != 1) {
                         $x = $x1 + $i;
-                        $y = \strval($y1 + $i);
+                        $y = strval($y1 + $i);
                         if (!$this->isEmptySquare($this->convertNumbers[$x] . $y)) {
-                            return \false;
+                            return false;
                         }
                         $spaces--;
                         $i++;
                     }
-                    return \true;
+                    return true;
                 }
             }
         }
-        return \false;
+        return false;
     }
 
     /**
@@ -490,8 +488,8 @@ class Helper
     {
         $letterA = $this->convertLetters[$square1[0]];
         $letterB = $this->convertLetters[$square2[0]];
-        $numberA = \intval(\substr($square1, 1));
-        $numberB = \intval(\substr($square2, 1));
+        $numberA = intval(substr($square1, 1));
+        $numberB = intval(substr($square2, 1));
         $xA = $letterA + 2;
         $xB = $letterA - 2;
         $yA = $numberA + 1;
@@ -500,7 +498,7 @@ class Helper
             $xA == $letterB && $yB == $numberB ||
             $xB == $letterB && $yA == $numberB ||
             $xB == $letterB && $yB == $numberB) {
-            return \true;
+            return true;
         }
         $xA = $letterA + 1;
         $xB = $letterA - 1;
@@ -510,9 +508,9 @@ class Helper
             $yA == $numberB && $xB == $letterB ||
             $yB == $numberB && $xA == $letterB ||
             $yB == $numberB && $xB == $letterB) {
-            return \true;
+            return true;
         }
-        return \false;
+        return false;
     }
 
     /**
@@ -529,15 +527,15 @@ class Helper
         $info = $this->getSquareInfo($square1);
         $x1 = $this->convertLetters[$square1[0]];
         $x2 = $this->convertLetters[$square2[0]];
-        $y1 = \intval(\substr($square1, 1));
-        $y2 = \intval(\substr($square2, 1));
+        $y1 = intval(substr($square1, 1));
+        $y2 = intval(substr($square2, 1));
         if ($include) {
             if ($info['color'] == 'R') {
                 $yA = $y1 + 2;
                 $yB = $y1 + 1;
                 $xA = $x1 + 1;
                 $xB = $x1 - 1;
-                if (\in_array($square1, $this->moveTwoSquares)) {
+                if (in_array($square1, $this->moveTwoSquares)) {
                     if ($yA == $y2 && $x1 == $x2) {
                         return $this->isEmptySquare($square2);
                     }
@@ -550,7 +548,7 @@ class Helper
                 $yB = $y1 - 1;
                 $xA = $x1 + 2;
                 $xB = $x1 + 1;
-                if (\in_array($square1, $this->moveTwoSquares)) {
+                if (in_array($square1, $this->moveTwoSquares)) {
                     if ($xA == $x2 && $y1 == $y2) {
                         return $this->isEmptySquare($square2);
                     }
@@ -563,7 +561,7 @@ class Helper
                 $yB = $y1 - 1;
                 $xA = $x1 + 1;
                 $xB = $x1 - 1;
-                if (\in_array($square1, $this->moveTwoSquares)) {
+                if (in_array($square1, $this->moveTwoSquares)) {
                     if ($yA == $y2 && $x1 == $x2) {
                         return $this->isEmptySquare($square2);
                     }
@@ -576,7 +574,7 @@ class Helper
                 $yB = $y1 + 1;
                 $xA = $x1 - 2;
                 $xB = $x1 - 1;
-                if (\in_array($square1, $this->moveTwoSquares)) {
+                if (in_array($square1, $this->moveTwoSquares)) {
                     if ($xA == $x2 && $y1 == $y2) {
                         return $this->isEmptySquare($square2);
                     }
@@ -592,34 +590,34 @@ class Helper
             $x_1 = $x1 + 1;
             $x_2 = $x1 - 1;
             if ($x_1 == $x2 && $y == $y2 || $x_2 == $x2 && $y == $y2) {
-                return \true;
+                return true;
             }
-            return \false;
+            return false;
         } elseif ($info['color'] == 'B') {
             $x = $x1 + 1;
             $y_1 = $y1 + 1;
             $y_2 = $y1 - 1;
             if ($x == $x2 && $y_1 == $y2 || $x == $x2 && $y_2 == $y2) {
-                return \true;
+                return true;
             }
-            return \false;
+            return false;
             
         } elseif ($info['color'] == 'Y') {
             $y = $y1 - 1;
             $x_1 = $x1 + 1;
             $x_2 = $x1 - 1;
             if ($x_1 == $x2 && $y == $y2 || $x_2 == $x2 && $y == $y2) {
-                return \true;
+                return true;
             }
-            return \false;
+            return false;
         } else {
             $x = $x1 - 1;
             $y_1 = $y1 + 1;
             $y_2 = $y1 - 1;
             if ($x == $x2 && $y_1 == $y2 || $x == $x2 && $y_2 == $y2) {
-                return \true;
+                return true;
             }
-            return \false;
+            return false;
         }
     }
 }
