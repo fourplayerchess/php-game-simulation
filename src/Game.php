@@ -47,7 +47,7 @@ class Game
      *
      * @return array Returns the 4 player chessboard.
      */
-    public function printBoard(): array
+    public function getBoard(): array
     {
         return $this->helper->board;
     }
