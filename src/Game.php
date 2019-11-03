@@ -22,7 +22,7 @@ class Game
     /** @var Helper $helper The helper class. */
     private $helper;
 
-    /** @var string $history The current game history. */
+    /** @var array $history The current game history. */
     private $history = [];
 
     /**
@@ -56,7 +56,7 @@ class Game
      *
      * @return bool Returns true if the piece was moved and false if not.
      */
-    public function move(string $form, string $to, string $promotionCode = 'Q'): bool
+    public function move(string $from, string $to, string $promotionCode = 'Q'): bool
     {
         $from = \trim($from);
         $to = \trim($to);
@@ -126,6 +126,7 @@ class Game
             'turn' => $this->helper->turn,
             'board' => $this->helper->board,
         ];
+        return \true;
     }
 
     /**
