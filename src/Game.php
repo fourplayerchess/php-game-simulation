@@ -144,7 +144,7 @@ class Game
         $prevPosition = \array_pop($this->history);
         $this->helper->castling = $prevPosition['castling'];
         $this->helper->enpassants = $prevPosition['enpassants'];
-        $this->helper->halfMoves = $prevPosition['halfMoves'],
+        $this->helper->halfMoves = $prevPosition['halfMoves'];
         $this->helper->moveNumber = $prevPosition['moveNumber'];
         $this->helper->turn = $prevPosition['turn'];
         $this->helper->board = $prevPosition['board'];
