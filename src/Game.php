@@ -84,6 +84,7 @@ class Game
             'board' => $this->helper->board,
         ];
         $x = \true;
+        $taking = \false;
         foreach ($moves as $fromAlt => $data) {
             foreach ($data as $toAlt) {
                 if ($fromAlt === $form && $toAlt === $to) {
