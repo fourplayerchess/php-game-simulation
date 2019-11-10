@@ -157,7 +157,7 @@ class Helper
         [0, 3,], [0, 1,], [0, 2,], [0, 4,], [0, 5,], [0, 1,], [0, 2,], [0, 3,],
     ];
 
-    /** @var array $board The hybird 4 player chess board. */
+    /** @var array $hybirdBoard The hybird 4 player chess board. */
     public $hybirdBoard = [
         [2, 3,], [2, 1,], [2, 2,], [2, 5,], [2, 4,], [2, 2,], [2, 1,], [2, 3,],
         [2, 0,], [2, 0,], [2, 0,], [2, 0,], [2, 0,], [2, 0,], [2, 0,], [2, 0,],
@@ -175,7 +175,7 @@ class Helper
         [0, 3,], [0, 1,], [0, 2,], [0, 4,], [0, 5,], [0, 1,], [0, 2,], [0, 3,],
     ];
 
-    /** @var array $board The reversed 4 player chess board. */
+    /** @var array $reversedBoard The reversed 4 player chess board. */
     public $reversedBoard = [
         [2, 3,], [2, 1,], [2, 2,], [2, 4,], [2, 5,], [2, 2,], [2, 1,], [2, 3,],
         [2, 0,], [2, 0,], [2, 0,], [2, 0,], [2, 0,], [2, 0,], [2, 0,], [2, 0,],
