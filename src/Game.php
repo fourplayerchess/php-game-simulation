@@ -95,8 +95,8 @@ class Game
                     $this->helper->board[$numericSquareTwo] = $this->board[$numericSquareOne];
                     $this->helper->board[$numericSquareOne] = 0;
                     if (isset($this->helper->castling[$from][$to]) && $this->helper->castling[$from][$to]) {
-                        $rookOneNumericSquare = $this->helper->rookSquares[$from][$to][];
-                        $rookTwoNumericSquare = $this->helper->rookSquares[$from][$to][];
+                        $rookOneNumericSquare = $this->helper->rookSquares[$from][$to][0];
+                        $rookTwoNumericSquare = $this->helper->rookSquares[$from][$to][1];
                         $rookOneNumericSquare = $this->helper->isNotOffBoardSquare($rookOneNumericSquare);
                         $rookTwoNumericSquare = $this->helper->isNotOffBoardSquare($rookTwoNumericSquare);
                         $this->helper->board[$rookOneNumericSquare] = $this->helper->board[$rookTwoNumericSquare];
