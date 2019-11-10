@@ -118,6 +118,7 @@ class Game
             $this->helper->castling = $originalArray['castling'];
             $this->helper->board = $originalArray['board'];
         }
+        /** @psalm-suppress RedundantCondition **/
         if ($taking || $squareInfoOne['piece'] === 'P') {
             $this->helper->halfMoves = 0;
         }
