@@ -25,9 +25,6 @@ class Game
     /** @var array $history The current game history. */
     private $history = [];
 
-    /** @var string $symmetry The current game symmetry. */
-    private $symmetry = 'standard';
-
     /**
      * Construct a new 4 player chess game.
      *
@@ -38,8 +35,7 @@ class Game
     public function __construct(Helper $helper, string $symmetry = 'standard')
     {
         $this->helper = $helper;
-        $this->symmetry = $symmetry;
-        $this->reset($symmetry);
+        $this->reset();
     }
 
     /**
